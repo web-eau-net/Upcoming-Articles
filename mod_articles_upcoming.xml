@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>mod_articles_upcoming</name>
+	<author>web-eau.net</author>
+	<creationDate>Nov 2022</creationDate>
+	<copyright>Copyright (C) 2022 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>daniel@web-eau.net</authorEmail>
+	<authorUrl>https://web-eau.net</authorUrl>
+	<version>1.2.0</version>
+	<description>MOD_ARTICLES_UPCOMING_XML_DESCRIPTION</description>
+	<namespace path="src">Joomla\Module\ArticlesUpcoming</namespace>
+	<files>
+		<filename module="mod_articles_upcoming">mod_articles_upcoming.php</filename>
+		<folder>tmpl</folder>
+			<folder>src</folder>
+	</files>
+	
+	<updateservers>
+		<server type="extension" priority="2" name="Upcoming Articles Updates">https://web-eau.net/files/articles-upcoming/articles-upcoming.xml</server>
+	</updateservers>
+	
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.mod_articles_upcoming.ini</language>
+		<language tag="en-GB">en-GB/en-GB.mod_articles_upcoming.sys.ini</language>
+		<language tag="fr-FR">fr-FR/fr-FR.mod_articles_upcoming.ini</language>
+		<language tag="fr-FR">fr-FR/fr-FR.mod_articles_upcoming.sys.ini</language>
+	</languages>
+	<help key="Site_Modules:_Articles_-_Upcoming" />
+    <config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="maximum"
+					type="number"
+					label="MOD_ARTICLES_UPCOMING_FIELD_MAX_LABEL"
+					description="MOD_ARTICLES_UPCOMING_FIELD_MAX_DESC"
+					default="5"
+					filter="integer"
+				/>
+				<field
+					name="catid"
+					type="category"
+					label="JCATEGORY"
+					description="MOD_ARTICLES_UPCOMING_FIELD_CATEGORY_DESC"
+					extension="com_content"
+					multiple="true"
+					filter="int_array"
+					class="multipleCategories"
+				/>
+				<field
+					name="showDate"
+					type="radio"
+					label="MOD_ARTICLES_UPCOMING_FIELD_SHOWDATE_LABEL"
+					description="MOD_ARTICLES_UPCOMING_FIELD_SHOWDATE_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					filter="integer"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="show_date_format"
+					type="text"
+					label="MOD_ARTICLES_UPCOMING_FIELD_DATEFIELDFORMAT_LABEL"
+					description="MOD_ARTICLES_UPCOMING_FIELD_DATEFIELDFORMAT_DESC"
+					default="Y-m-d H:i:s"
+					
+				/>
+			</fieldset>
+			<fieldset name="advanced">
+				
+               <field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+				/>
+				<field
+					name="moduleclass_sfx"
+					type="textarea"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					rows="3"
+				/>
+
+				<field
+					name="owncache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					default="1"
+					filter="integer"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="number"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					default="900"
+					filter="integer"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
